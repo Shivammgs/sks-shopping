@@ -1,0 +1,48 @@
+{% extends 'myapp/layout/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="py-3  my-4 bg-primary">
+    <div class="container">
+        <a class="text-white" href="{% url 'home'%}">Home/</a>
+        <a class="text-white" href="{% url 'collection'%}">Collection/</a>
+        <a class="text-white" href="{% url 'collectionviews' category.slug %  }">{{category.name}} /</a>
+    </div>
+</div>
+
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>{{category.name}}</h1>
+            <hr>
+            <div class="row">
+                {% for item in product %}
+                    <div class="col-sm-3">
+                        <a href="{% url 'productviews' item.category.slug item.slug %}">
+                        <div class="card my-4" style="width: 80%; height: 80%;">
+                            <img src="{{item.product_image.url}}" alt="Product images"/ style="height:60%">
+                            <div class="card-body">
+                                <h5 class="text-center">{{item.name}}</h5>
+                                <del class="float-start">Rs.{{item.original_price|stringformat:'d' }}</del>&nbsp;&nbsp;&nbsp;
+                                <span class="float-end">Rs.{{item.selling_price|stringformat:'d'}}</span>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    
+{% endblock content %}
+
+ 
+
+

@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+  <div class="container">
+    <a class="navbar-brand" href="#">SKS Shopping</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+   
+    
+      <div class="search-bar">
+        <form action="{% url 'searchproducts' %}" method="POST" novalidate>
+         {% csrf_token %}
+          <div class="input-group">
+            <input type="search" required class="form-control" name="productsearch" id="searchproducts" placeholder="Search Products">
+            <button type="Submit" class="input-group-text"><i class="fa fa-search"></i></button>
+          </div>
+        </form>
+      </div>
+
+      <!-- <div class="mx-3">
+        <form method="GET" action="{% url 'productfilter' %}" class="float-end">
+            <div class="row">
+                <div class="col-md-3">
+                    <button type="submit" class="">Filter</button>
+                </div>
+            </div>
+        </form>
+    </div> -->
+    
+  
+   <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == ' ' %}active{% endif %}" 
+          aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'collection' %}active{% endif %}"  aria-current="page" href="{% url 'collection' %}">Category</a>
+        </li>
+        <li class="nav-item"></li>
+        <a class="nav-link {% if request.resolver_match.url_name == 'productfilter' %}active{% endif %}" href="{% url 'productfilter' %}">Filter<i class="fa fa-filter"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'cart' %}active{% endif %}" aria-current="page" href="{% url 'cart' %}">Cart<i class="fa-solid fa-cart-shopping"></i><sup><span id="cart-count">0</span></sup></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'wishlist' %}active{% endif %}" aria-current="page" href="{% url 'wishlist' %}">Wishlist <i class="fa-solid fa-heart"></i></a>
+        </li>
+       
+        
+        {% if request.user.is_authenticated%}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ request.user }}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{% url 'myorders' %}">My-orders</a></li>
+              <li><a class="dropdown-item" href="{% url 'changepassword' %}">Change password</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+      </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'register' %}active{% endif %}" href="{% url 'register' %}">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'login' %}active{% endif %}" href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
+        
+      </ul>
+    </div>
+  </div>
+</nav>

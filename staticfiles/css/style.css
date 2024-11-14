@@ -1,0 +1,113 @@
+.carousel-item{
+    height: 100%;
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+    color: #0000ff;
+}
+
+.product-viewtag{
+    background-color: red;
+    color: #fff;
+    font-size: 11px;
+    line-height: 1;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 22px;
+    font-weight: 600;
+    
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.quantity {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.quantity button {
+    background-color: #f9f9f9;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 1;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.quantity button:hover {
+    background-color: #ddd;
+}
+
+.quantity input {
+    border: none;
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+    height: 40px;
+}
+
+.quantity input:focus {
+    outline: none;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.active{
+    font-weight: 800px;
+    color: #0000ff;
+}
+
+.checkout{
+    color: white;
+    background-color: blue;
+}
+
+.checkoutform label{
+    font-size: 14px !important;
+    font-weight: 600;
+}
+
+.checkoutform input{
+    font-size: 14px !important;
+    border: 1px solid black;
+}
+
+.checkoutform textarea{
+    border: 1px solid black;
+}
+
+.whatsapp-chat {
+    position: fixed;
+    bottom: 20px;  /* Distance from the bottom */
+    right: 20px;   /* Distance from the right */
+    z-index: 1000; /*Ensures it stays on top of other content */
+}
+
+.whatsapp-chat img {
+    border-radius: 50%; /* Make the image circular */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Optional shadow for better visibility */
+}
+
+.search-bar{
+    width:30% !important;
+    margin-left: 10%;
+}
+

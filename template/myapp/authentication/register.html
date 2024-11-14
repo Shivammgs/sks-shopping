@@ -1,0 +1,56 @@
+{% extends 'myapp/layout/base.html' %}
+{% load static %}
+
+
+{% block content %}
+  
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="">
+                <div class="card mt-5 shadow">
+                    <div class="card-body">
+                        <form  method="POST" action="" novalidate>
+                            {% csrf_token %}
+                            <div class="text-center">
+                                <h4>Registration Form</h4>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <label for="">Username:</label>
+                                {{form.username}}
+                                {% if form.errors.username %}
+                                    <label for="text-danger">{{form.error.username}}</label>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                <label for="">Email:</label>
+                                {{form.email}}
+                                {% if form.errors.email %}
+                                    <label for="text-danger">{{form.error.email}}</label>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                <label for="">Password:</label>
+                                {{form.password1}}
+                                {% if form.errors.password1 %}
+                                    <label for="text-danger">{{form.error.password1}}</label>
+                                {% endif %}
+                            </div>
+                            <div class="form-group">
+                                <label for="">Confirm-Password:</label>
+                                {{form.password2}}
+                                {% if form.errors.password2 %}
+                                    <label for="text-danger">{{form.error.password2}}</label>
+                                {% endif %}
+                            </div>
+                            <button type="Submit" class="btn float shadow btn-success px-4">Register</button>
+                            <a href="{% url 'login'%}" class="float-end mt-3"><u>Login</u></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

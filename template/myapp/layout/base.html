@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    
+    {% comment %} Alertify CSS{% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/alertify.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/alertifydef.css'%}">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+
+    <!-- <meta name="referrer" content="no-refferrer-when-downgrade"> -->
+
+        
+    
+    <title>
+
+        {% block title%}
+
+        {% endblock title %}
+    </title>
+    
+</head>
+
+<body>
+    {% include "myapp/include/navbar.html" %}
+    {% block content %}
+        
+    {% endblock content %}
+
+
+        <a href="https://wa.me/+919818387753?text=I'm%20interested%20in%20%chat" target="_blank" class="whatsapp-chat p-fixed">
+            <img src="{% static 'images/whatsApp_img.jpg' %}" alt="whatsApp logo" width="60px">
+            
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="{% static 'js/jquery-3.6.0.min.js'%}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bundle.js' %}"></script>
+   
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+    <!-- for search  -->
+    <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script> 
+
+    <!-- <script>
+        var availableTags = [];
+    
+        $(document).ready(function() {
+            $.ajax({
+                method: "GET",
+                url: "/product-list/",  // Fetches product names for autocomplete
+                success: function (response) {
+                    availableTags = response;  // Assign response to availableTags
+                    startAutocomplete(availableTags);  // Initialize autocomplete
+                },
+                error: function (error) {
+                    console.log("Error fetching product list:", error);
+                }
+            });
+    
+            function startAutocomplete(availableTags) {
+                $("#searchproducts").autocomplete({
+                    source: availableTags  // Use availableTags as the source for autocomplete
+                });
+            }
+        });
+    </script> -->
+     
+    <script>
+        var availableTags = [];
+        $.ajax({
+            method: "GET",
+            url: "/product-list/",  
+            success: function (response) { 
+                startAutocomplete(response);
+            },
+        });
+        
+        function startAutocomplete(availableTags)
+        {
+            $( "#searchproducts" ).autocomplete({
+                source: availableTags
+              });
+        }
+        
+    </script>
+
+
+    <!-- Start of Tawk.to Script -->
+<!-- <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function() {
+        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/61d91061f7cf527e84d10688/1fp1g8ect';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    })();
+</script> -->
+<!-- End of Tawk.to Script -->
+
+
+    
+    {% comment %}Alertify JS{% endcomment %}
+    <script src="{% static 'js/alertify.js' %}"></script>
+    
+    <script>
+        alertify.set('notifier','position', 'top-right');
+        {% for msg in messages %}
+            alertify.success('{{ msg }}');
+        {% endfor %}
+    </script>
+    
+
+
+    {% block script %}
+      
+    {% endblock script %}
+
+    <!-- {% comment %}Razorpay checkout{% endcomment %} -->
+          
+    <script src="{% static 'js/checkoutpay.js'%}"></script>
+
+    
+
+</body>
+</html>
